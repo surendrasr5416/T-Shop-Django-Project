@@ -21,10 +21,10 @@
 
             <!-- Buttons -->
             <div class="d-flex gap-2 mt-auto">
-                <a href="" class="btn btn-outline-primary w-100">
+                <a href="{% url 'edit_carousel' carousel_image.pk %}" class="btn btn-outline-primary w-100">
                     Update
                 </a>
-                <a href="" class="btn btn-outline-danger w-100">
+                <a href="{% url 'del_carousel' carousel_image.pk %}" class="btn btn-outline-danger w-100">
                     Delete
                 </a>
             </div>

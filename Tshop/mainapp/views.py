@@ -21,7 +21,6 @@ def homeView(request):
 
 def aboutView(request):
     template = 'mainapp/about.html'
-
     return render(
         request = request,
         template_name= template,
@@ -45,8 +44,27 @@ from django.views.generic import (
     UpdateView, 
     DeleteView
 )
+from django.urls import reverse_lazy
 
 class CarouselImageList(ListView):
     template_name = 'mainapp/carousel/carousel_list.html'
     model = CarouselImage
     context_object_name = 'carousel_images'    
+
+class AddCarouselImage(CreateView):
+    model = CarouselImage
+    template_name = 'mainapp/carousel/add_carousel.html'
+    fields = '__all__'
+    success_url = reverse_lazy('carousel_list')
+    
+class UpdateCarouselImage(UpdateView):
+    model = CarouselImage
+    template_name = 'mainapp/carousel/edit_carousel.html'
+    fields = '__all__'
+    success_url = reverse_lazy('carousel_list')
+    
+class DeleteCarouselImage(DeleteView):
+    model = CarouselImage
+    template_name = 'mainapp/carousel/del_carousel.html'
+    success_url = reverse_lazy('carousel_list')
+    context_object_name = 'carousel_image' 
